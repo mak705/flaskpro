@@ -1,0 +1,30 @@
+https://www.postgresql.org/download/linux/ubuntu/
+
+
+https://www.postgresql.org/download/linux/ubuntu/
+
+cat /etc/apt/sources.list.d/pgdg.list
+
+deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+
+sudo apt-get update
+
+sudo apt-get install postgresql-10
+
+
+In Ubuntu you need to create a server,
+
+After installing postgress open pgAdmin, right click on server and create server
+
+Name : PostgreSQL 10
+
+Host : localhost
+
+give username and password
+
+If password showing error go to terminal type below two command and 123 is the password
+
+ sudo -u postgres psql
+
+postgres=# ALTER USER postgres PASSWORD '123';  
+

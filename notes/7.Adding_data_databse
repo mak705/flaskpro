@@ -1,0 +1,43 @@
+1 remove user line from the app.py
+Create add_user.html in templates folder
+we will forward to to add_user.html instead index.html
+
+app.py
+def index():
+    return render_template('add_user.html') no need to pass users now
+ start server > blank page because no content in add_user.html
+
+add_user.html
+<html>
+<head>
+</head>
+<body>
+
+  <form method = 'post' action='/post_user'>
+    <label>Username  : </label>
+    <input id = 'username' type='text' name='username'/>
+    <label>Email  : </label>
+    <input id = 'email' type='text' name='email'/>
+    <input type = 'submit'/>
+
+  </form>
+</body>
+
+
+</html>
+-------------
+start the server , username and email will appear in the homepage let us check
+how to add username and email to db
+
+so create a new function in app.py and import module request, redirect, url_for
+@app.route('/post_user', method=['POST'])
+def post_user():
+    user = User(request.form['username'], request.form['email'])
+    db.session.add(user)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+Make sure sql is running
+start the server and add the username and emailcan
+open the db and go to sample go to schemas, public, table , user, you can see the username and
+email entered

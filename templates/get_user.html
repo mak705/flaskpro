@@ -1,0 +1,10 @@
+{% for singleuser in users %}
+  <ul>
+    {#<li>{{singleuser.username}}-{{singleuser.email}}</li>#}
+    <li><a href='profile_page/{{singleuser.username}}'>{{singleuser.username}}-{{singleuser.email}}</a></li>
+
+
+
+  </ul>
+
+{% endfor %}

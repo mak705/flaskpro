@@ -1,0 +1,32 @@
+change
+ from flask_security import Security,SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
+
+
+app.config['SECRET_KEY'] = True
+app.config['SECURITY_REGISTERABLE'] = True
+app.config['SECURITY_PASSWORD_HASH'] = 'bcrypt'
+app.config['SECURITY_PASSWORD_SALT'] = '$ma$2'
+
+
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ python
+Python 3.6.5 (default, Apr  1 2018, 05:46:30)
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from flask import Flask
+>>> from flask_sqlalchemy import SQLAlchemy
+>>> from flask_sqlalchemy import SQLAlchemy
+KeyboardInterrupt
+>>> from  app import db
+/home/mak/flaskpro/env/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+  >>> db.create_all()
+  /home/mak/flaskpro/env/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+    """)
+pip install psycopg2-binary
+
+
+check pgadmin4 table > users > column
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ python app.py
+remove test user
+
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ pip3 install bcrypt==3.1.3

@@ -1,0 +1,59 @@
+1.(env) mak@mak-Aspire-A515-51G:~/flaskpro$ pip install flask-SQLAlchemy
+
+update the app.py
+2. from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+
+
+
+app = Flask(__name__)
+db = SQLAlchemy(app)
+
+@app.route('/')
+def index():
+    users = {'name':'mak','username':'hus'}
+    return render_template('index.html', users=users)
+
+
+@app.route('/homepage')
+def display_homepage():
+    return 'Display homepage'
+
+if __name__ =='__main__':
+    app.run()
+---------------
+
+NOw open pgadmin4 we need to create new db and schema
+create a sample db
+connect that db so edit app.py and mention
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:123@localhost/sample'
+
+NOw create db schema function ny creating the class, class has to available on index function, app.py file
+class User(db.models):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80))
+    email = db.Column(db.String(100), unique = True)
+
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+
+    def __repr__(self):
+        return '<User %r>' %self.username
+
+
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ python app.py
+
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ python
+>>> from app import db
+ignore the warning
+>>> db.create_all()
+got the error of psycopg2 and so install it
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ pip install psycopg2
+
+python
+>>> from app import db
+>>> db.create_all()
+ NOw schema public will be availble in the sample database go to pgAdmin and check the schema > public>
+ Tables > user

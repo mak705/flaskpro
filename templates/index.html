@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+<html>
+<head>
+</head>
+<body>
+{% block body%}
+
+{% if users.username =='hus' %}
+<h1>Hello {{users.username}}</h1>
+{% else %}
+
+<h1>Hi this is else {{users.username}}</h1>
+{%endif%}
+
+{% endblock%}
+
+</body>
+
+
+</html>

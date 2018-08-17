@@ -1,0 +1,47 @@
+create a folder templates in the root folder
+/home/mak/flaskpro
+create a index.html inside
+ add content
+ <html>
+ <head>
+
+ </head>
+ <body>
+ <h1>Mak world</h1>
+ <h1>{{users.name}}</h1>
+ <h1>{{users.username}}</h1>
+
+
+ </body>
+
+
+ </html>
+
+ -----------------
+ 2. edit app.py
+ from flask import Flask, render_template
+
+
+
+
+
+ app = Flask(__name__)
+
+
+ @app.route('/')
+ def index():
+     users = {'name':'mak', 'username':'hus'}
+     return render_template('index.html', users=users)
+
+
+ @app.route('/homepage')
+ def display_homepage():
+     return 'Display homepage'
+
+ if __name__ =='__main__':
+     app.run()
+------------------------------------------------
+mak@mak-Aspire-A515-51G:~/flaskpro$ pwd
+/home/mak/flaskpro
+mak@mak-Aspire-A515-51G:~/flaskpro$ python app.py
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)

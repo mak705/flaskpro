@@ -1,0 +1,33 @@
+mak@mak-Aspire-A515-51G:~/flaskpro$ virtualenv env
+mak@mak-Aspire-A515-51G:~/flaskpro$ source env/bin/activate
+(env) mak@mak-Aspire-A515-51G:~/flaskpro$ pip install flask==0.12.2
+
+mak@mak-Aspire-A515-51G:~/flaskpro$ mkdir static
+mak@mak-Aspire-A515-51G:~/flaskpro$ mkdir templates
+mak@mak-Aspire-A515-51G:~/flaskpro$ mkdir images
+mak@mak-Aspire-A515-51G:~/flaskpro$ touch app.py
+----------------------------------
+from flask import Flask
+
+
+
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return 'Hello world'
+
+
+@app.route('/homepage')
+def display_homepage():
+    return 'Display homepage'
+
+if __name__ =='__main__':
+    app.run()
+----------------------------------------------
+
+http://127.0.0.1:5000 >> Hello world
+http://127.0.0.1:5000/homepage >> Display homepage

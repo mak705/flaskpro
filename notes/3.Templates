@@ -1,0 +1,63 @@
+let see how to use for loop iterate over users
+2 file need to edit app.py and index.html
+
+app.py
+from flask import Flask, render_template
+app = Flask(__name__)
+@app.route('/')
+def index():
+    users = [
+            {
+            'name':'mak',
+            'username':'hus'
+            },
+            {
+            'name':'mak one',
+            'username':'hus one'
+            }
+            ]
+    return render_template('index.html', users=users)
+
+if __name__ =='__main__':
+    app.run()
+-----------------------
+index.html
+<html>
+<head>
+</head>
+<body><h1>Mak world</h1>
+{% for user in users%}
+<h1>{{user.name}}</h1>
+<h1>{{user.username}}</h1>
+{%endfor%}
+</body>
+</html>
+-----------------------------
+http://127.0.0.1:5000/
+---------------
+let check for single user
+
+edit app.py and index.html
+<html>
+<head>
+</head>
+<body>
+{% if users.username =='hus' %}
+<h1>Hello {{users.username}}</h1>
+{% else %}
+<h1>Hi this is else {{users.username}}</h1>
+{%endif%}
+</body>
+</html>
+--
+app.py
+from flask import Flask, render_template
+app = Flask(__name__)
+@app.route('/')
+def index():
+    users = {'name':'mak','username':'hus'}
+    return render_template('index.html', users=users)
+if __name__ =='__main__':
+    app.run()
+--------------------------------------
+if you change the username to some other else statement will eecute from index.html

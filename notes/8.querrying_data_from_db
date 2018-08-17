@@ -1,0 +1,29 @@
+create a method inside app.py for users
+
+@app.route('/users')
+def get_users():
+    users = User.query.all()
+    return render_template('get_user.html', user = users)
+
+now create   get_user.html inside the template folder
+get_user.html
+
+{% for singleuser in users %}
+  <ul>
+    <li>{{singleuser.username}}</li>
+  </ul>
+
+{% endfor %}
+
+run the server
+http://127.0.0.1:5000/
+save user and password and hit the url below u can see the users
+http://127.0.0.1:5000/users
+
+if you want to display email id also the go to get_user.html
+{% for singleuser in users %}
+  <ul>
+    <li>{{singleuser.username}}-{{singleuser.email}}</li>
+  </ul>
+
+{% endfor %}

@@ -1,0 +1,35 @@
+let us map facebook profile
+@app.route('/profile_page/<username>')
+def get_profile(username):
+    singleUser=User.query.filter_by(username=username).first()
+    return render_template('profile_page.html', singleUser = singleUser)
+    #extract the first record from the table
+    #return template
+
+page_profile.html inside templates
+<html>
+<head>
+</head>
+<body>
+</body>
+<h1> {{singleUser.username}}</h1>
+<h2> {{singleUser.email}}</h2>
+
+</html>
+
+hit browser
+http://127.0.0.1:5000/profile_page/mak
+
+you can see the users
+to make that to link create a href inside in get_user.html
+{% for singleuser in users %}
+  <ul>
+    {#<li>{{singleuser.username}}-{{singleuser.email}}</li>#}
+    <li><a href='profile_page/{{singleuser.username}}'>{{singleuser.username}}-{{singleuser.email}}</a></li>
+
+
+
+  </ul>
+
+{% endfor %}
+http://127.0.0.1:5000/users it will appear as link
